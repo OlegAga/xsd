@@ -875,13 +875,27 @@
 				</xsd:annotation>
 			</xsd:element>
 
-        	<xsd:element name="PrevCard" type="CardNumberType" minOccurs="0" maxOccurs="unbounded">
-        		<xsd:annotation>
-        			<xsd:documentation>
-        				Список ранее выданных карт
-        			</xsd:documentation>
-        		</xsd:annotation>
-        	</xsd:element>
+        		<xsd:element name="PrevCard" type="CardNumberType" minOccurs="0" maxOccurs="unbounded">
+        			<xsd:annotation>
+        				<xsd:documentation>
+        					Список ранее выданных карт
+        				</xsd:documentation>
+        			</xsd:annotation>
+        		</xsd:element>
+        	
+			<xsd:element name="Email" minOccurs="1" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>
+						Электронный адрес
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="[^@]+@[^\.]+\..+" />
+						<xsd:maxLength value="256"></xsd:maxLength>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>        	
 
 		</xsd:sequence>
 	</xsd:complexType>
@@ -1085,7 +1099,7 @@
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:element>
-			<xsd:element name="ContactInfo" minOccurs="1" maxOccurs="1" type="ContactInfoType">
+			<xsd:element name="ContactInfo" minOccurs="0" maxOccurs="1" type="ContactInfoType">
 				<xsd:annotation>
 					<xsd:documentation>
 						Контактная информация
@@ -1963,7 +1977,7 @@
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:element>
-			<xsd:element name="Email" minOccurs="1" maxOccurs="1">
+			<xsd:element name="Email" minOccurs="0" maxOccurs="1">
 				<xsd:annotation>
 					<xsd:documentation>
 						Электронный адрес
