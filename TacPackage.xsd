@@ -1351,6 +1351,7 @@
         				<xsd:enumeration value="passport"></xsd:enumeration>
         				<xsd:enumeration value="residence_permit"></xsd:enumeration>
         				<xsd:enumeration value="certificate_of_refugee"></xsd:enumeration>
+        				<xsd:enumeration value="patent_for_job"></xsd:enumeration>
         			</xsd:restriction>
         		</xsd:simpleType>
         	</xsd:element>
