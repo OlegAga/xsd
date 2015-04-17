@@ -1408,7 +1408,7 @@
         		</xsd:simpleType>
         	</xsd:element>
         	<xsd:element name="IssuedDate" type="xsd:date"
-        		minOccurs="0" maxOccurs="1">
+        		minOccurs="1" maxOccurs="1">
         		<xsd:annotation>
         			<xsd:documentation>
         				Дата выдачи паспорта
