@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.example.org/"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org/">
+<xsd:schema targetNamespace="http://www.example.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org/">
 
 	<xsd:include schemaLocation="common.xsd"/>
-	<xsd:element name="EstrPackage" type="EstrPackageType" />
+	<xsd:element name="EstrPackage" type="EstrPackageType"/>
 
 	<xsd:complexType name="EstrPackageType">
 		<xsd:annotation>
@@ -33,7 +32,7 @@
 						</xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
-				<xsd:element name="EstrPackageStatusChangeNotification" type="EstrPackageStatusChangeNotificationType" minOccurs="1" maxOccurs="1">
+				<xsd:element name="EstrPackageStatusChangeNotification" type="TacPackageStatusChangeNotificationType" minOccurs="1" maxOccurs="1">
 					<xsd:annotation>
 						<xsd:documentation>Уведомление о изменении статуса пакета
 						</xsd:documentation>
@@ -145,135 +144,6 @@
 		</xsd:sequence>
 	</xsd:complexType>
 
-	<xsd:complexType name="EstrPackageStatusChangeNotificationType">
-		<xsd:annotation>
-			<xsd:documentation> Уведомление о изменении статуса пакета
-			</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-
-			<xsd:element name="EstrPackageStatusChangeDate" type="xsd:date" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Дата изменения статуса</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-
-			<xsd:element name="EstrPackageStatus" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Новый статус пакета:
-						FBUReject - отклонено ФБУ, при этом заполняется причина отклонения
-						CardManReject - отклонено производителем карт, при этом
-						заполняется причина отклонения
-					</xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:enumeration value="FBUReject"/>
-						<xsd:enumeration value="CardManReject"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-
-			<xsd:element name="StateChangeReason" type="xsd:string" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Причина изменения статуса </xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
-
-	<xsd:complexType name="OrderStatusChangeNotificationType">
-		<xsd:annotation>
-			<xsd:documentation> Уведомление о изменении статуса заявления
-			</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:element name="OrderNumber" type="OrderNumberType" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Номер заявления </xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-
-			<xsd:element name="OrderStatusChangeDate" type="xsd:date" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Дата изменения статуса</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-
-			<xsd:element name="OrderStatus" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Новый статус заявления:
-						FBURegistered - зарегистрировано в перечнях ФБУ, при этом заполняется список
-						CardInfo, с информацией о номерах карт и началом/окончанием их
-						действия
-						FBUReject - отвергнуто ФБУ, при этом заполняется причина
-						отклонения
-						Personalized - карты изготовлены, при этом полностью
-						заполняется CardInfo с информацией о
-						изготовленных картах
-						PersonalizedPart - карты частично изготовлены, при этом
-						полностью
-						заполняется CardInfo с информацией о изготовленных картах
-						NotPersonalized - Отвергнуто изготовителем на этапе проверки
-						данных, при
-						этом заполняется причина отклонения
-						appAccepted - принято к обработке
-						appCheckData - проверка корректности данных
-						appInvalidData - отклонено (некорректные данные)
-						appConfirmed -
-						данные проверены
-						appMfrSentToFbu - отправлено в ФБУ
-						appFbuReceived -
-						получено в ФБУ
-						appFbuProcessing - взято в работу в ФБУ
-						appFbuRejected - отклонено ФБУ
-						appMfrDone - исполнено ФБУ
-						appDeleted - удалено (помечено как удаленное)
-					</xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<!-- obsolete statuses -->
-						<xsd:enumeration value="FBURegistered"/>
-						<xsd:enumeration value="FBUReject"/>
-						<xsd:enumeration value="Personalized"/>
-						<xsd:enumeration value="PersonalizedPart"/>
-						<xsd:enumeration value="NotPersonalized"/>
-						<!-- new statuses -->
-						<xsd:enumeration value="appAccepted"/>
-						<xsd:enumeration value="appCheckData"/>
-						<xsd:enumeration value="appInvalidData"/>
-						<xsd:enumeration value="appConfirmed"/>
-
-						<xsd:enumeration value="appMfrSentToFbu"/>
-						<xsd:enumeration value="appFbuReceived"/>
-						<xsd:enumeration value="appFbuProcessing"/>
-						<xsd:enumeration value="appFbuRejected"/>
-
-						<xsd:enumeration value="appMfrDone"/>
-						<xsd:enumeration value="appDeleted"/>
-
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-
-			<xsd:element name="CardInfo" type="CardInfoType" minOccurs="0" maxOccurs="unbounded">
-				<xsd:annotation>
-					<xsd:documentation> Информация о картах: заполняется ФБУ при
-						отправке выписки или
-						производителем карт при отпрвке уведомления о
-						производстве
-					</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="StateChangeReason" type="xsd:string" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Причина изменения статуса </xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
-
 	<xsd:complexType name="DriverOrderType">
 		<xsd:annotation>
 			<xsd:documentation>Данные заявления на выдачу карты водителя
@@ -299,7 +169,7 @@
 				</xsd:annotation>
 			</xsd:element>
 
-			<xsd:element name="DriverLicense" type="DriverLicenseType" minOccurs="1" maxOccurs="1">
+			<xsd:element name="DriverLicense" type="DriverLicense_v2Type" minOccurs="1" maxOccurs="1">
 				<xsd:annotation>
 					<xsd:documentation>Данные водительского удостоверения
 					</xsd:documentation>
@@ -600,40 +470,6 @@
 		</xsd:sequence>
 	</xsd:complexType>
 
-	<xsd:complexType name="CardSimpleType">
-		<xsd:annotation>
-			<xsd:documentation>Информация о ранее выданной карте
-			</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:element name="CardNumber" type="CardNumberType" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Номер карты</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="CardExpiration" type="xsd:date" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Дата окончания действия</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="NameFirst" type="xsd:string" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Имя</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="NameMiddle" type="xsd:string" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Отчество</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="NameLast" type="xsd:string" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Фамилия</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
-
 	<xsd:complexType name="PersonSimpleType">
 		<xsd:annotation>
 			<xsd:documentation>Сотрудники </xsd:documentation>
@@ -745,110 +581,6 @@
 						<xsd:maxLength value="32"/>
 					</xsd:restriction>
 				</xsd:simpleType>
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
-
-	<xsd:complexType name="PassportType">
-		<xsd:annotation>
-			<xsd:documentation>Данные паспорта</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:element name="PassportName" type="xsd:string" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Документ, удостоверяющий личность
-					</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="PassportSeries" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Серия паспорта </xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:maxLength value="32"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-			<xsd:element name="PassportNumber" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Номер паспорта </xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:maxLength value="32"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-			<xsd:element name="PassportIssuedBy" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Кем выдан паспорт </xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:maxLength value="64"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-			<xsd:element name="PassportDivision" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Код подразделения </xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:maxLength value="32"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-			<xsd:element name="PassportIssuedDate" type="xsd:date" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Дата выдачи паспорта </xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
-
-	<xsd:complexType name="DriverLicenseType">
-		<xsd:annotation>
-			<xsd:documentation>Данные водительского удостоверения
-			</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:element name="DriverLicenseNumber" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Номер водительского удостоверения
-					</xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-			<xsd:element name="DriverLicenseIssuedBy" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Кем выдано </xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:maxLength value="64"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-			<xsd:element name="DriverLicenseCountry" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Страна выдачи удостоверения </xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:maxLength value="8"/>
-						<xsd:minLength value="2"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-			<xsd:element name="DriverLicenseIssuedDate" type="xsd:date" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation> Дата выдачи </xsd:documentation>
-				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
@@ -1048,7 +780,6 @@
 					<xsd:documentation>Данные паспорта</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
-
 		</xsd:sequence>
 	</xsd:complexType>
 
@@ -1123,45 +854,6 @@
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:element>
-
 		</xsd:sequence>
 	</xsd:complexType>
-
-	<xsd:complexType name="ContactInfoType">
-		<xsd:annotation>
-			<xsd:documentation>Контактная информация</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:element name="Phone" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Телефон</xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:pattern value="[0-9\(\)\-\+ ]+"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-
-			<xsd:element name="Email" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>
-						Электронный адрес
-					</xsd:documentation>
-				</xsd:annotation>
-				<xsd:simpleType>
-					<xsd:restriction base="xsd:string">
-						<xsd:pattern value="[^@]+@[^\.]+\..+"/>
-					</xsd:restriction>
-				</xsd:simpleType>
-			</xsd:element>
-
-			<xsd:element name="OtherContactInfo" type="xsd:string" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Другая контактная информация</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
-
 </xsd:schema>
