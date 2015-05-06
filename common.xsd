@@ -1200,12 +1200,7 @@
           <xsd:documentation>ИНН</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="KPP" maxOccurs="1" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string">
-            <xsd:pattern value="\d{9}"/>
-          </xsd:restriction>
-        </xsd:simpleType>
+      <xsd:element name="KPP" maxOccurs="1" minOccurs="0" type="KppType">
       </xsd:element>
       <xsd:element name="AddressPost" type="OrgAddress_v2Type" minOccurs="1" maxOccurs="1">
         <xsd:annotation>

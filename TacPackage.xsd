@@ -46,12 +46,7 @@
           <xsd:documentation>ОГРН</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="KPP" maxOccurs="1" minOccurs="0">
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string">
-            <xsd:pattern value="\d{9}"/>
-          </xsd:restriction>
-        </xsd:simpleType>
+      <xsd:element name="KPP" maxOccurs="1" minOccurs="0" type="KppType">
       </xsd:element>
       <xsd:element name="ContactInfo" minOccurs="0" maxOccurs="1" type="ContactInfoType">
         <xsd:annotation>
