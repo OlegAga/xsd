@@ -1,0 +1,25 @@
+ESTR,TC,,
+,,,
+none,OT->OrderCardType,"1..1 ?",
+OT->DO->ContactInfo,none,0..1,
+none,OT->PO->OrgName,1..1,
+none,OT->PO->OrgPostAddress,1..1,
+OT->DO->RegAddress,none,1..1,
+OT->DO->PostAddress,none,1..1,
+OT->OO->Person,none,0..*,
+none,OT->WO->FssLicense,1..1,
+OrgInfo->AddressActual,none,0..1,
+OrgInfo->OrgNameLat,none,1..1,translit
+OrgInfo->OrgShortNameLat,none,1..1,translit
+AddressType->Country(2..8),none,1..1,translit
+AddressType->RegionLat,none,0..1,
+AddressType->RegionRus,"у нас две цифры кода",0..1,
+AddressType->DistrictLat,none,0..1,translit
+AddressType->SettlementLat,none,1..1,translit
+AddressType->StreetLat,none,1..1,translit
+none,AddressType->FiasCode,0..1,
+none,AddressType->FiasGUID,0..1,
+PersonInfoType->NameFirstLat,none,1..1,translit
+PersonInfoType->NameMiddleLat,none,0..1,translit
+PersonInfoType->NameLastLat,none,1..1,translit
+PersonInfoType->Resident,none,"0..1 ?",
