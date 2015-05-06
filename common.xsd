@@ -977,7 +977,7 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
-  <xsd:complexType name="TacPackageStatusChangeNotificationType">
+  <xsd:complexType name="PackageStatusChangeNotificationType">
     <xsd:annotation>
       <xsd:documentation> Уведомление о изменении статуса пакета </xsd:documentation>
     </xsd:annotation>
