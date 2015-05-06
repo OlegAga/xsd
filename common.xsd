@@ -576,6 +576,81 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:complexType name="CredentialType">
+    <xsd:annotation>
+      <xsd:documentation>Данные паспорта</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>тип удостоверения личности</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="passport"/>
+            <xsd:enumeration value="residence_permit"/>
+            <xsd:enumeration value="certificate_of_refugee"/>
+            <xsd:enumeration value="patent_for_job"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Series" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Серия паспорта
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="32"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Number" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Номер паспорта
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="32"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="IssuedBy" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Кем выдан паспорт
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="100"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Division" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Код подразделения
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="32"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="IssuedDate" type="xsd:date" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Дата выдачи паспорта
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
   <xsd:complexType name="CardSimpleType">
     <xsd:annotation>
       <xsd:documentation>Информация о ранее выданной карте </xsd:documentation>
@@ -931,6 +1006,627 @@
       <xsd:element name="StateChangeReason" type="xsd:string" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
           <xsd:documentation> Причина изменения статуса </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrgAddress_v2Type">
+    <xsd:annotation>
+      <xsd:documentation>Адрес организации</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="FullAddress" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Адрес в одну строку
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="128"/>
+            <xsd:minLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="PostCode" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Почтовый индекс
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{6}"/>
+            <xsd:minLength value="6"/>
+            <xsd:maxLength value="6"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="RegionCode" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Код региона</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{2}"/>
+            <xsd:length value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="AutonomousArea" type="xsd:string" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Автономный округ
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="District" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Район</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="64"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Settlement" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Населенный пункт
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="20"/>
+            <xsd:minLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Street" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Улица</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="64"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="House" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Дом</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Building" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Строение/Корпус
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Liter" minOccurs="0" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Office" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Квартира/Офис</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FiasCode" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Код ФИАС</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{26}"/>
+            <xsd:minLength value="26"/>
+            <xsd:maxLength value="26"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FiasGUID" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>GUID ФИАС</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:length value="36"/>
+            <xsd:pattern value="[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}">
+                		</xsd:pattern>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OrgInfo_v2Type">
+    <xsd:annotation>
+      <xsd:documentation>Информация об организации</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="OrgName" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Наименование</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="64"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="OrgShortName" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Сокращенное наименование
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="40"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="OrgFace" maxOccurs="1" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>поле "в лице"</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="INN" type="InnType" maxOccurs="1" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>ИНН</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="KPP" maxOccurs="1" minOccurs="0">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{9}"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="AddressPost" type="OrgAddress_v2Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Почтовый адрес
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="AddressLegal" type="OrgAddress_v2Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Юридический адрес
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PersonInfo_v2Type">
+    <xsd:annotation>
+      <xsd:documentation>Персональные данные лица на которое оформляется
+                карта</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="NameFirst" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Имя</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="NameMiddle" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Отчество</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="NameLast" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Фамилия</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Resident" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="Nationality" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="20"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="BirthDate" type="xsd:date" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Дата рождения</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="SNILS" type="SnilsType" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>СНИЛС</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Credential" type="CredentialType" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Данные паспорта
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponsiblePersonType">
+    <xsd:sequence>
+      <xsd:element name="ResponsiblePersonNameFirst" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Имя</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ResponsiblePersonNameMiddle" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Отчество</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ResponsiblePersonNameLast" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Фамилия</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="ResponsiblePersonPosition" type="xsd:string" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Должность руководителя(ответственного лица) на
+						которого оформляется карта
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ResponsiblePersonReason" type="xsd:string" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Номер и дата приказа назначения на должность
+						(руководителя) ответственного лица
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FssLicenseType">
+    <xsd:sequence>
+      <xsd:element name="LicenseNumber" type="xsd:string" minOccurs="1" maxOccurs="1">
+			</xsd:element>
+      <xsd:element name="LicenseDateIssued" type="xsd:date" minOccurs="1" maxOccurs="1">
+			</xsd:element>
+      <xsd:element name="LicenseDateExpiration" type="xsd:date" minOccurs="0" maxOccurs="1">
+			</xsd:element>
+      <xsd:element name="LicenseIssuedBy" type="xsd:string" minOccurs="1" maxOccurs="1">
+			</xsd:element>
+      <xsd:element name="DecisionNumber" type="xsd:string" minOccurs="1" maxOccurs="1">
+			</xsd:element>
+      <xsd:element name="DecisionDate" type="xsd:date" minOccurs="1" maxOccurs="1">
+			</xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SupervisorOrderType">
+    <xsd:annotation>
+      <xsd:documentation>Данные, если заявитель контролер</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="OrgInfo" type="OrgInfoType" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Информация об организации
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PrevCard" type="CardNumberType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+        					Список ранее выданных карт
+        				</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Email" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Электронный адрес
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[^@]+@[^\.]+\..+"/>
+            <xsd:maxLength value="256"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="Phone" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Телефон</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9\(\)\-\+ ]+"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="PersonOrder_v2Type">
+    <xsd:annotation>
+      <xsd:documentation>
+				Данные, если заявитель частное лицо
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="PersonInfo" type="PersonInfo_v2Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Персональные данные заявителя
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="PrevCardNumber" type="CardNumberType" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Номер ранее выданной карты
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="DriverLicense" type="DriverLicense_v2Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Данные водительского удостоверения
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OrgName" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Наименование транспортного предприятия
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="40"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="OrgPostAddress" type="OrgAddress_v2Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Почтовый адрес транспортного предприятия
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Photo" type="Attachments_v2Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>Фотография</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Sign" type="Attachments_v2Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+						Изображение подписи
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CompanyOrderType">
+    <xsd:annotation>
+      <xsd:documentation>Данные, если заявитель компания</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="OrgInfo" type="OrgInfo_v2Type" minOccurs="1" maxOccurs="1">
+        	</xsd:element>
+      <xsd:element name="Resident" type="xsd:boolean" minOccurs="1" maxOccurs="1">
+        	</xsd:element>
+      <xsd:element name="OGRN" type="OgrnType" maxOccurs="1" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>ОГРН</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ResponsiblePerson" type="ResponsiblePersonType" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="PrevCard" type="CardNumberType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Список ранее выданных карт
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Sign" type="Attachments_v2Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Изображение подписи
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="WorkshopOrderType">
+    <xsd:annotation>
+      <xsd:documentation>Данные, если заявитель мастерская</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="OrgInfo" type="OrgInfo_v2Type" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="OGRN" type="OgrnType" maxOccurs="1" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>ОГРН</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="MarkNumber" maxOccurs="1" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+                        Номер клейма в формате РФ 9999 (для мастерской)
+                    </xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="7"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="FssLicense" type="FssLicenseType" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="ResponsiblePerson" type="ResponsiblePersonType" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="PrevCard" type="CardNumberType" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Список ранее выданных карт
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Sign" type="Attachments_v2Type" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+                        Изображение подписи
+                    </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Order_v2Type">
+    <xsd:annotation>
+      <xsd:documentation>Заявление на выдачу карт тахографа</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="OrderNumber" type="OrderNumberType" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Номер заявления
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OrderDate" type="xsd:date" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Дата подачи заявления
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OrderCardType" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Тип карты: D - карта водителя M - карта
+        				мастерской P - карта предприятия K - карта
+        				контролера
+        			</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="D"/>
+            <xsd:enumeration value="M"/>
+            <xsd:enumeration value="P"/>
+            <xsd:enumeration value="K"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="OrderCardCount" type="xsd:int" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Количество карт
+        			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="OrderReason" minOccurs="1" maxOccurs="1">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="create"/>
+            <xsd:enumeration value="change"/>
+            <xsd:enumeration value="refresh"/>
+            <xsd:enumeration value="newpd"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:choice>
+        <xsd:element name="PersonOrder" type="PersonOrder_v2Type" minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation>
+        					Данные, если заявитель не компания
+        				</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="CompanyOrder" type="CompanyOrderType" minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation>
+        					Данные, если заявитель компания
+        				</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="WorkshopOrder" type="WorkshopOrderType" minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation>
+        					Данные, если заявитель мастерская
+        				</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+        <xsd:element name="SupervisorOrder" type="SupervisorOrderType" minOccurs="1" maxOccurs="1">
+          <xsd:annotation>
+            <xsd:documentation>
+        					Данные, если заявитель котролирующая
+        					организация
+        				</xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+      <xsd:element name="Attachment" type="Attachments_v2Type" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+        				Вложения за исключением фотографии/изображения
+        				подписи
+        			</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
     </xsd:sequence>

@@ -8,13 +8,14 @@
 				изготовителем ЕСТР карт</xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
+      <xsd:element name="MessageInfo" type="MessageInfoType" minOccurs="0" maxOccurs="1"/>
       <xsd:element name="PackageInfo" type="PackageInfoType" minOccurs="1" maxOccurs="1">
         <xsd:annotation>
           <xsd:documentation>Информация о пакете</xsd:documentation>
         </xsd:annotation>
       </xsd:element>
       <xsd:choice>
-        <xsd:element name="Order" type="OrderType" minOccurs="1" maxOccurs="unbounded">
+        <xsd:element name="Order" type="Order_v2Type" minOccurs="1" maxOccurs="unbounded">
           <xsd:annotation>
             <xsd:documentation>Заявление на выдачу ЕСТР карт:
 							Отсылается из ОВК изготовителю карт, при этом формируется уникальный номер
@@ -53,6 +54,7 @@
 						</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
+        <xsd:element name="MessageConfirmation" type="MessageConfirmationType" minOccurs="1" maxOccurs="1"/>
       </xsd:choice>
     </xsd:sequence>
   </xsd:complexType>
