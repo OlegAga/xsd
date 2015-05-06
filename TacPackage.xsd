@@ -117,17 +117,17 @@
         </xsd:annotation>
       </xsd:element>
       <xsd:choice>
-        <xsd:element name="PersonOrder" type="PersonOrderType" minOccurs="0" maxOccurs="1">
+        <xsd:element name="PersonOrder" type="PersonOrderType" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation> Данные, если заявитель не компания </xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element name="OrgOrder" type="OrgOrderType" minOccurs="0" maxOccurs="1">
+        <xsd:element name="OrgOrder" type="OrgOrderType" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation> Данные, если заявитель компания </xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element name="SupervisorOrder" type="SupervisorOrderType" minOccurs="0" maxOccurs="1">
+        <xsd:element name="SupervisorOrder" type="SupervisorOrderType" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation> Данные, если заявитель котролирующая организация </xsd:documentation>
           </xsd:annotation>
@@ -195,28 +195,28 @@
         </xsd:simpleType>
       </xsd:element>
       <xsd:choice>
-        <xsd:element name="PersonOrder" type="PersonOrder_v2Type" minOccurs="0" maxOccurs="1">
+        <xsd:element name="PersonOrder" type="PersonOrder_v2Type" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation>
         					Данные, если заявитель не компания
         				</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element name="CompanyOrder" type="CompanyOrderType" minOccurs="0" maxOccurs="1">
+        <xsd:element name="CompanyOrder" type="CompanyOrderType" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation>
         					Данные, если заявитель компания
         				</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element name="WorkshopOrder" type="WorkshopOrderType" minOccurs="0" maxOccurs="1">
+        <xsd:element name="WorkshopOrder" type="WorkshopOrderType" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation>
         					Данные, если заявитель мастерская
         				</xsd:documentation>
           </xsd:annotation>
         </xsd:element>
-        <xsd:element name="SupervisorOrder" type="SupervisorOrderType" minOccurs="0" maxOccurs="1">
+        <xsd:element name="SupervisorOrder" type="SupervisorOrderType" minOccurs="1" maxOccurs="1">
           <xsd:annotation>
             <xsd:documentation>
         					Данные, если заявитель котролирующая
