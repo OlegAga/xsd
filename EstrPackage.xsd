@@ -374,7 +374,7 @@
       <xsd:element name="MarkNumber" maxOccurs="1" minOccurs="0">
         <xsd:annotation>
           <xsd:documentation>
-						Номер клейма в формате РФ 9999 (для мастерской)
+						Номер клейма в формате RUS 999 (для мастерской)
 					</xsd:documentation>
         </xsd:annotation>
         <xsd:simpleType>
@@ -787,4 +787,10 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="MarkNumberType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="7"/>
+      <xsd:pattern value="RUS \d{3}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
 </xsd:schema>

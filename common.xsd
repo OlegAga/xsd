@@ -64,7 +64,7 @@
   <xsd:simpleType name="MarkNumberType">
     <xsd:restriction base="xsd:string">
       <xsd:maxLength value="7"/>
-      <xsd:pattern value="[A-Z]{1,3} \d{3,4}"/>
+      <xsd:pattern value="[A-ZА-Я]{1,3} \d{3,4}"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="BoolType">
@@ -1505,7 +1505,8 @@
       <xsd:element name="MarkNumber" maxOccurs="1" minOccurs="1" type="MarkNumberType">
         <xsd:annotation>
           <xsd:documentation>
-                        Номер клейма в формате РФ 9999 (для мастерской)
+                        Номер клейма в формате РФ 9999 (для мастерской РФ)
+                        Номер клейма в формате RUS 999 (для мастерской ЕСТР)
                     </xsd:documentation>
         </xsd:annotation>
       </xsd:element>
