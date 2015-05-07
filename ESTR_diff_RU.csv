@@ -22,5 +22,5 @@ none,AddressType->FiasGUID,0..1,,"нужно ли в ЕСТР?"
 PersonInfoType->NameFirstLat,none,1..1,translit,
 PersonInfoType->NameMiddleLat,none,0..1,translit,"скорее всего, избыточно"
 PersonInfoType->NameLastLat,none,1..1,translit,
-PersonInfoType->Resident,none,"0..1 ?",,
+PersonInfoType->Resident,none,"0..1 ?",,"Есть в TacPackage (master) в PersonInfo_v2Type - строка 1943"
 RUS 999,РФ 9999,,,"разная маска клейма, возможно ли GBR, KAZ и прочее"
