@@ -1,12 +1,12 @@
 ESTR,TC,,,comment
 ,,,,
 none,OT->OrderCardType,"1..1 ?",,
-OT->DO->ContactInfo,none,0..1,,"скорее всего - избыточно"
+OT->DO->ContactInfo,none,0..1,,"скорее всего, избыточно"
 none,OT->PO->OrgName,1..1,,
-none,OT->PO->OrgPostAddress,1..1,,
-OT->DO->RegAddress,none,1..1,,"адрес водителя по месту жительства"
+none,OT->PO->OrgPostAddress,1..1,,"в ЕСТР берется адрес именно водителя, а не ТП"
+OT->DO->RegAddress,none,1..1,,"адрес водителя по месту жительства, указывается если не совпадает с паспортным"
 OT->DO->PostAddress,none,1..1,,"адрес водителя по паспорту"
-OT->OO->Person,none,0..*,,"скорее всего избыточно"
+OT->OO->Person,none,0..*,,"скорее всего, избыточно"
 none,OT->WO->FssLicense,1..1,,"нужно ли в ЕСТР?"
 OrgInfo->AddressActual,none,0..1,,
 OrgInfo->OrgNameLat,none,1..1,translit,
@@ -20,7 +20,7 @@ AddressType->StreetLat,none,1..1,translit,
 none,AddressType->FiasCode,0..1,,"нужно ли в ЕСТР?"
 none,AddressType->FiasGUID,0..1,,"нужно ли в ЕСТР?"
 PersonInfoType->NameFirstLat,none,1..1,translit,
-PersonInfoType->NameMiddleLat,none,0..1,translit,"скорее всего избыточно"
+PersonInfoType->NameMiddleLat,none,0..1,translit,"скорее всего, избыточно"
 PersonInfoType->NameLastLat,none,1..1,translit,
 PersonInfoType->Resident,none,"0..1 ?",,
-RUS 999,РФ 9999,,,"разная маска клейма, возможно ли GBR KAZ и прочее"
+RUS 999,РФ 9999,,,"разная маска клейма, возможно ли GBR, KAZ и прочее"
