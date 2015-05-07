@@ -75,6 +75,12 @@
       <xsd:pattern value="[0-1]{1}"/>
     </xsd:restriction>
   </xsd:simpleType>
+  <xsd:simpleType name="NameType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"></xsd:minLength>
+      <xsd:maxLength value="35"></xsd:maxLength>
+    </xsd:restriction>
+  </xsd:simpleType>
   <xsd:simpleType name="OrgInfoType">
     <xsd:annotation>
       <xsd:documentation>Подлежит переопределению в наследниках до отказа от заявок первой версии по РФ</xsd:documentation>
@@ -1236,38 +1242,20 @@
                 карта</xsd:documentation>
     </xsd:annotation>
     <xsd:sequence>
-      <xsd:element name="NameFirst" minOccurs="1" maxOccurs="1">
+      <xsd:element name="NameFirst" minOccurs="1" maxOccurs="1" type="NameType">
         <xsd:annotation>
           <xsd:documentation>Имя</xsd:documentation>
         </xsd:annotation>
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="35"/>
-          </xsd:restriction>
-        </xsd:simpleType>
       </xsd:element>
-      <xsd:element name="NameMiddle" minOccurs="0" maxOccurs="1">
+      <xsd:element name="NameMiddle" minOccurs="0" maxOccurs="1" type="NameType">
         <xsd:annotation>
           <xsd:documentation>Отчество</xsd:documentation>
         </xsd:annotation>
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="35"/>
-          </xsd:restriction>
-        </xsd:simpleType>
       </xsd:element>
-      <xsd:element name="NameLast" minOccurs="1" maxOccurs="1">
+      <xsd:element name="NameLast" minOccurs="1" maxOccurs="1" type="NameType">
         <xsd:annotation>
           <xsd:documentation>Фамилия</xsd:documentation>
         </xsd:annotation>
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="35"/>
-          </xsd:restriction>
-        </xsd:simpleType>
       </xsd:element>
       <xsd:element name="Resident" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
       <xsd:element name="Nationality" minOccurs="1" maxOccurs="1">
