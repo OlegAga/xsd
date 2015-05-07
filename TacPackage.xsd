@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org/" targetNamespace="http://www.example.org/">
-  <xsd:include schemaLocation="common.xsd"/>
+  <xsd:redefine schemaLocation="common.xsd"/>
   <xsd:complexType name="OrgInfoType">
     <xsd:annotation>
       <xsd:documentation>Информация об организации</xsd:documentation>
@@ -566,4 +566,10 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="MarkNumberType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="7"/>
+      <xsd:pattern value="РФ \d{4}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
 </xsd:schema>
