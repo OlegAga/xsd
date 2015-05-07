@@ -775,4 +775,10 @@
       </xsd:element>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:simpleType name="MarkNumberType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="7"/>
+      <xsd:pattern value="RUS \d{3}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
 </xsd:schema>
