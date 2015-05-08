@@ -1,25 +1,26 @@
-ESTR,TC,,
-,,,
-none,OT->OrderCardType,"1..1 ?",
-OT->DO->ContactInfo,none,0..1,
-none,OT->PO->OrgName,1..1,
-none,OT->PO->OrgPostAddress,1..1,
-OT->DO->RegAddress,none,1..1,
-OT->DO->PostAddress,none,1..1,
-OT->OO->Person,none,0..*,
-none,OT->WO->FssLicense,1..1,
-OrgInfo->AddressActual,none,0..1,
-OrgInfo->OrgNameLat,none,1..1,translit
-OrgInfo->OrgShortNameLat,none,1..1,translit
-AddressType->Country(2..8),none,1..1,translit
-AddressType->RegionLat,none,0..1,
-AddressType->RegionRus,"у нас две цифры кода",0..1,
-AddressType->DistrictLat,none,0..1,translit
-AddressType->SettlementLat,none,1..1,translit
-AddressType->StreetLat,none,1..1,translit
-none,AddressType->FiasCode,0..1,
-none,AddressType->FiasGUID,0..1,
-PersonInfoType->NameFirstLat,none,1..1,translit
-PersonInfoType->NameMiddleLat,none,0..1,translit
-PersonInfoType->NameLastLat,none,1..1,translit
-PersonInfoType->Resident,none,"0..1 ?",
+ESTR,TC,,,comment
+,,,,
+none,OT->OrderCardType,"1..1 ?",,
+OT->DO->ContactInfo,none,0..1,,"скорее всего, избыточно"
+none,OT->PO->OrgName,1..1,,
+none,OT->PO->OrgPostAddress,1..1,,"в ЕСТР берется адрес именно водителя, а не ТП"
+OT->DO->RegAddress,none,1..1,,"адрес водителя по месту жительства, указывается если не совпадает с паспортным"
+OT->DO->PostAddress,none,1..1,,"адрес водителя по паспорту"
+OT->OO->Person,none,0..*,,"скорее всего, избыточно"
+none,OT->WO->FssLicense,1..1,,"нужно ли в ЕСТР?"
+OrgInfo->AddressActual,none,0..1,,
+OrgInfo->OrgNameLat,none,1..1,translit,
+OrgInfo->OrgShortNameLat,none,1..1,translit,
+AddressType->Country(2..8),none,1..1,translit,
+AddressType->RegionLat,none,0..1,,
+AddressType->RegionRus,"у нас две цифры кода",0..1,,
+AddressType->DistrictLat,none,0..1,translit,
+AddressType->SettlementLat,none,1..1,translit,
+AddressType->StreetLat,none,1..1,translit,
+none,AddressType->FiasCode,0..1,,"нужно ли в ЕСТР?"
+none,AddressType->FiasGUID,0..1,,"нужно ли в ЕСТР?"
+PersonInfoType->NameFirstLat,none,1..1,translit,
+PersonInfoType->NameMiddleLat,none,0..1,translit,"скорее всего, избыточно"
+PersonInfoType->NameLastLat,none,1..1,translit,
+PersonInfoType->Resident,none,"0..1 ?",,"Есть в TacPackage (master) в PersonInfo_v2Type - строка 1943"
+RUS 999,РФ 9999,,,"разная маска клейма, возможно ли GBR, KAZ и прочее"
