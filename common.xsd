@@ -1287,38 +1287,20 @@
   </xsd:complexType>
   <xsd:complexType name="ResponsiblePersonType">
     <xsd:sequence>
-      <xsd:element name="ResponsiblePersonNameFirst" minOccurs="1" maxOccurs="1">
+      <xsd:element name="ResponsiblePersonNameFirst" minOccurs="1" maxOccurs="1" type="NameType">
         <xsd:annotation>
           <xsd:documentation>Имя</xsd:documentation>
         </xsd:annotation>
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="35"/>
-          </xsd:restriction>
-        </xsd:simpleType>
       </xsd:element>
-      <xsd:element name="ResponsiblePersonNameMiddle" minOccurs="0" maxOccurs="1">
+      <xsd:element name="ResponsiblePersonNameMiddle" minOccurs="0" maxOccurs="1" type="NameType">
         <xsd:annotation>
           <xsd:documentation>Отчество</xsd:documentation>
         </xsd:annotation>
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="35"/>
-          </xsd:restriction>
-        </xsd:simpleType>
       </xsd:element>
-      <xsd:element name="ResponsiblePersonNameLast" minOccurs="1" maxOccurs="1">
+      <xsd:element name="ResponsiblePersonNameLast" minOccurs="1" maxOccurs="1" type="NameType">
         <xsd:annotation>
           <xsd:documentation>Фамилия</xsd:documentation>
         </xsd:annotation>
-        <xsd:simpleType>
-          <xsd:restriction base="xsd:string">
-            <xsd:minLength value="1"/>
-            <xsd:maxLength value="35"/>
-          </xsd:restriction>
-        </xsd:simpleType>
       </xsd:element>
       <xsd:element name="ResponsiblePersonPosition" type="xsd:string" minOccurs="1" maxOccurs="1">
         <xsd:annotation>
