@@ -709,26 +709,33 @@
 			<xsd:documentation>Информация о карте тахографа</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
-			<xsd:element name="CardNumber" type="CardNumberType" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Номер карты</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="IssueDate" type="xsd:date" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Дата начала действия</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="Expiration" type="xsd:date" minOccurs="1" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Дата окончания действия</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
-			<xsd:element name="CertInfo" type="CertInfoType" minOccurs="0" maxOccurs="1">
-				<xsd:annotation>
-					<xsd:documentation>Информация о сертификате</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
+		  <xsd:element name="CardNumber" type="CardNumberType" minOccurs="1" maxOccurs="1">
+		    <xsd:annotation>
+		      <xsd:documentation>Номер карты</xsd:documentation>
+		    </xsd:annotation>
+		  </xsd:element>
+		  <xsd:element name="IssueDate" type="xsd:date" minOccurs="1" maxOccurs="1">
+		    <xsd:annotation>
+		      <xsd:documentation>Дата начала действия</xsd:documentation>
+		    </xsd:annotation>
+		  </xsd:element>
+		  <xsd:element name="Expiration" type="xsd:date" minOccurs="1" maxOccurs="1">
+		    <xsd:annotation>
+		      <xsd:documentation>Дата окончания действия</xsd:documentation>
+		    </xsd:annotation>
+		  </xsd:element>
+		  <xsd:element name="CertInfo" type="CertInfoType" minOccurs="0" maxOccurs="1">
+		    <xsd:annotation>
+		      <xsd:documentation>Информация о сертификате</xsd:documentation>
+		    </xsd:annotation>
+		  </xsd:element>
+		  <xsd:element name="SKZI" maxOccurs="1" minOccurs="0">
+		    <xsd:simpleType>
+		      <xsd:restriction base="xsd:string">
+		        <xsd:pattern value="\d{3}-\d{7}"></xsd:pattern>
+		      </xsd:restriction>
+		    </xsd:simpleType>
+		  </xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 
