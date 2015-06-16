@@ -1544,9 +1544,9 @@
                     <xsd:documentation> Организация выдавшая водительское удостоверение </xsd:documentation>
                 </xsd:annotation>
                 <xsd:simpleType>
-                    <xsd:restriction base="xsd:string">
-                        <xsd:maxLength value="33"/>
-                    </xsd:restriction>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:maxLength value="100" />
+                  </xsd:restriction>
                 </xsd:simpleType>
             </xsd:element>
             <xsd:element name="DriverLicenseIssuedDate" type="xsd:date" minOccurs="0" maxOccurs="1">
