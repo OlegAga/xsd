@@ -839,10 +839,11 @@
             		</xsd:documentation>
             	</xsd:annotation>
             	<xsd:simpleType>
-            		<xsd:restriction base="xsd:string">
-            			<xsd:minLength value="1"></xsd:minLength>
-            			<xsd:maxLength value="40"></xsd:maxLength>
-            		</xsd:restriction>
+            	  <xsd:restriction base="xsd:string">
+            	    <xsd:minLength value="1"></xsd:minLength>
+            	    <xsd:maxLength value="40"></xsd:maxLength>
+            	    <xsd:pattern value="[^\s]+\s[^\s].+"></xsd:pattern>
+            	  </xsd:restriction>
             	</xsd:simpleType>
             </xsd:element>
 
@@ -1154,9 +1155,10 @@
         			<xsd:documentation>Наименование</xsd:documentation>
         		</xsd:annotation>
         		<xsd:simpleType>
-        			<xsd:restriction base="xsd:string">
-        				<xsd:maxLength value="64" />
-        			</xsd:restriction>
+        		  <xsd:restriction base="xsd:string">
+        		    <xsd:maxLength value="64" />
+        		    <xsd:pattern value="[^\s]+\s[^\s].+"></xsd:pattern>
+        		  </xsd:restriction>
         		</xsd:simpleType>
         	</xsd:element>
 
@@ -1168,9 +1170,10 @@
         			</xsd:documentation>
         		</xsd:annotation>
         		<xsd:simpleType>
-        			<xsd:restriction base="xsd:string">
-        				<xsd:maxLength value="40" />
-        			</xsd:restriction>
+        		  <xsd:restriction base="xsd:string">
+        		    <xsd:maxLength value="40" />
+        		    <xsd:pattern value="[^\s]+\s[^\s].+"></xsd:pattern>
+        		  </xsd:restriction>
         		</xsd:simpleType>
         	</xsd:element>
 
